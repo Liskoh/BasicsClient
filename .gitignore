@@ -1,0 +1,12 @@
+/.metadata/
+/saves/*
+options.txt
+optionsof.txt
+/screenshots/*
+/bin/*
+macros.json
+avalon.json
+positions.json
+.idea
+*.iml
+out/*
