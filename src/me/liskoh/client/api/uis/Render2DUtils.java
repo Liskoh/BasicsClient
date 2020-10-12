@@ -10,16 +10,15 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Render2DUtils {
 
-    public static int drawText(String text, int x, int y, float scale, int color) {
+    public static void drawText(String text, int x, int y, float scale, int color) {
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
-        int i = Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(text, (int) (x / scale), (int) (y / scale), color);
+        Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(text, (int) (x / scale), (int) (y / scale), color);
         GL11.glPopMatrix();
-        return i;
     }
 
-    public static int drawText(String text, int x, int y, float scale) {
-        return Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(text, (int) (x / scale), (int) (y / scale), 0xFFFFFFFF);
+    public static void drawText(String text, int x, int y, float scale) {
+        Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(text, (int) (x / scale), (int) (y / scale), 0xFFFFFFFF);
     }
 
     public static void drawRect(double x1, double y1, double d, double e, int p_73734_4_)

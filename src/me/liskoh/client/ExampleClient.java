@@ -6,6 +6,7 @@ import me.liskoh.client.api.BasicsClient;
 import me.liskoh.client.api.events.Event;
 import me.liskoh.client.api.events.impl.KeyTipedEvent;
 import me.liskoh.client.api.events.impl.TickEvent;
+import me.liskoh.client.api.uis.ExamplePageUI;
 import me.liskoh.client.example.commands.TestCommand;
 import me.liskoh.client.example.configuration.ExampleConfiguration;
 import me.liskoh.client.example.uis.auctions.AuctionSellUI;
@@ -57,7 +58,8 @@ public class ExampleClient extends BasicsClient {
             final KeyTipedEvent keyTipedEvent = (KeyTipedEvent) event;
 
             if (keyTipedEvent.getKey() == Keyboard.KEY_Q)
-                this.displayUI(new AuctionSellUI(new ItemStack(Items.diamond_sword)));
+//                this.displayUI(new AuctionSellUI(new ItemStack(Items.diamond_sword)));
+                this.displayUI(new ExamplePageUI());
         }
 
     }

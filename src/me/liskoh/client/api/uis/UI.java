@@ -42,9 +42,20 @@ public abstract class UI extends GuiScreen {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float tick) {
+
         this.drawDefaultBackground();
+
+        if (this instanceof PageUI) {
+            PageUI page = (PageUI) this;
+            page.getCurrentPageComponents().forEach(component -> {
+                page.setCurrentComponentPosition();
+                page.setCurrentIndex(page.getCurrentIndex() + 1);
+            });
+            page.setCurrentIndex(0);
+        }
+
         this.components.forEach(component -> {
-            if (component.isVisible())
+            if (component.isVisible() && !component.isPagination())
                 component.draw(mouseX, mouseY);
             else if (component.isVisible() && !component.getOverlays().isEmpty())
                 component.getOverlays().forEach(overlay -> {
@@ -55,6 +66,15 @@ public abstract class UI extends GuiScreen {
 
         this.drawUI(mouseX, mouseY, tick);
         super.drawScreen(mouseX, mouseY, tick);
+    }
+
+    public List<Component> getPaginationComponents() {
+        List<Component> comps = new ArrayList<>();
+
+        for (Component component : this.components)
+            if (component.isPagination())
+                comps.add(component);
+        return comps;
     }
 
     @Override

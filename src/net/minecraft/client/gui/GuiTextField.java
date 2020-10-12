@@ -423,7 +423,7 @@ public class GuiTextField extends Gui {
             if (var4.length() > 0) {
                 String var10 = var5 ? var4.substring(0, var2) : var4;
 //                var9 = this.field_146211_a.drawStringWithShadow(var10, var7, var8, var1);
-                var9 = Render2DUtils.drawText(var10, (int) (var7 / scale), (int) (var8 / scale), scale);
+//                var9 = Render2DUtils.drawText(var10, (int) (var7 / scale), (int) (var8 / scale), scale);
             }
 
             boolean var13 = this.field_146224_r < this.field_146216_j.length() || this.field_146216_j.length() >= this.func_146208_g();
@@ -446,7 +446,7 @@ public class GuiTextField extends Gui {
                     Gui.drawRect(var11, var8 - 1, var11 + 1, var8 + 1 + this.field_146211_a.FONT_HEIGHT, -3092272);
                 } else {
 //                    this.field_146211_a.drawStringWithShadow("_", var11, var8, var1);
-                    var9 = Render2DUtils.drawText("_", (int) (var11 / scale), (int) (var8 / scale), scale);
+//                    var9 = Render2DUtils.drawText("_", (int) (var11 / scale), (int) (var8 / scale), scale);
                 }
             }
 

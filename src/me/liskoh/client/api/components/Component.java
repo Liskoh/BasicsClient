@@ -21,6 +21,9 @@ public abstract class Component {
     private List<Overlay> overlays;
     private ResourceLocation resource;
     private ComponentPriority priority;
+    private boolean pagination;
+    private int index;
+    private int page;
 
     public Component(int x, int y){
         this.x = x;
@@ -29,6 +32,14 @@ public abstract class Component {
         this.priority = ComponentPriority.DEFAULT;
         this.actions = new ArrayList<>();
         this.overlays = new ArrayList<>();
+        this.pagination = false;
+        this.index = 0;
+        this.page = 0;
+    }
+
+    public Component setPagination(boolean pagination) {
+        this.pagination = pagination;
+        return this;
     }
 
     public Component setResource(ResourcePath path) {

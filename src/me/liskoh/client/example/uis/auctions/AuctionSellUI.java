@@ -7,10 +7,13 @@ import me.liskoh.client.api.components.backgrounds.Background;
 import me.liskoh.client.api.components.boxes.TextBox;
 import me.liskoh.client.api.components.buttons.HoveredButton;
 import me.liskoh.client.api.components.items.ItemStackComponent;
+import me.liskoh.client.api.components.texts.Text;
+import me.liskoh.client.api.uis.Render2DUtils;
 import me.liskoh.client.api.uis.UI;
 import me.liskoh.client.example.actions.CloseUIAction;
 import me.liskoh.client.example.uis.auctions.actions.AuctionSellAction;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.opengl.GL11;
 
 @Getter
 public class AuctionSellUI extends UI {
@@ -37,6 +40,8 @@ public class AuctionSellUI extends UI {
         confirmButton.setResource(ResourcePath.AUCTION_CONFIRM_BUTTON);
         confirmButton.setPriority(ComponentPriority.BUTTON);
         confirmButton.addAction(new AuctionSellAction());
+//        confirmButton.setText("�cCONFIRMER",1.0F);
+//        confirmButton.getText().setHoverText("�cCONFIRMER");
         confirmButton.setVisible(true);
         this.addComponent(confirmButton);
 
@@ -79,6 +84,9 @@ public class AuctionSellUI extends UI {
     @Override
     public void drawUI(int mouseX, int mouseY, float tick) {
         this.box.draw(mouseX, mouseY);
+        Text text = new Text(this.getDividedWidth() + 300 ,this.getDividedHeight() , "HELLO WORLD");
+        text.setScale(3.0F);
+        text.draw(mouseX,mouseY);
     }
 
     @Override

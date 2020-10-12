@@ -29,9 +29,6 @@ public  class ItemStackComponent extends Component {
 
     public ItemStackComponent setScale(float scale) {
         this.scale = scale;
-//        this.setX(this.getX() / 2);
-//        this.setY(this.getY() / 2);
-        //TODO: Check
         this.setX((int) (this.getX() / scale));
         this.setY((int) (this.getY() / scale));
         return this;
