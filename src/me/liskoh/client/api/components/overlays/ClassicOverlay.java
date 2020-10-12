@@ -2,13 +2,9 @@ package me.liskoh.client.api.components.overlays;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.liskoh.client.api.components.Component;
 import net.minecraft.client.Minecraft;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import static me.liskoh.client.api.uis.Render2DUtils.*;
+import static me.liskoh.client.api.others.Render2DUtils.*;
 
 @Getter @Setter
 public  class ClassicOverlay extends Overlay {

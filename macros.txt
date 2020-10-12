@@ -1,0 +1,2 @@
+#Tue Oct 13 00:21:51 CEST 2020
+macro=16@gamemode 1

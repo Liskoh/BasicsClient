@@ -1,6 +1,6 @@
 package net.minecraft.client.gui;
 
-import me.liskoh.client.api.uis.Render2DUtils;
+import me.liskoh.client.api.others.Render2DUtils;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ChatAllowedCharacters;
 import org.lwjgl.opengl.GL11;

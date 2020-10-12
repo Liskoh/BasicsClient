@@ -2,7 +2,7 @@ package me.liskoh.client.api.components;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.liskoh.client.api.components.actions.Action;
+import me.liskoh.client.api.actions.Action;
 import me.liskoh.client.api.components.overlays.Overlay;
 import net.minecraft.util.ResourceLocation;
 

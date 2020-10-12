@@ -3,13 +3,7 @@ package me.liskoh.client.api.components.backgrounds;
 import lombok.Getter;
 import lombok.Setter;
 import me.liskoh.client.api.components.Component;
-import me.liskoh.client.api.uis.Render2DUtils;
-import net.minecraft.client.Minecraft;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static me.liskoh.client.api.uis.Render2DUtils.*;
+import me.liskoh.client.api.others.Render2DUtils;
 
 @Getter @Setter
 public class Background extends Component {

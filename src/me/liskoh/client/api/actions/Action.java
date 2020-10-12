@@ -1,4 +1,4 @@
-package me.liskoh.client.api.components.actions;
+package me.liskoh.client.api.actions;
 
 public abstract class Action {
 

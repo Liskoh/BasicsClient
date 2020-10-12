@@ -8,12 +8,10 @@ import me.liskoh.client.api.components.boxes.TextBox;
 import me.liskoh.client.api.components.buttons.HoveredButton;
 import me.liskoh.client.api.components.items.ItemStackComponent;
 import me.liskoh.client.api.components.texts.Text;
-import me.liskoh.client.api.uis.Render2DUtils;
 import me.liskoh.client.api.uis.UI;
 import me.liskoh.client.example.actions.CloseUIAction;
 import me.liskoh.client.example.uis.auctions.actions.AuctionSellAction;
 import net.minecraft.item.ItemStack;
-import org.lwjgl.opengl.GL11;
 
 @Getter
 public class AuctionSellUI extends UI {

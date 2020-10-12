@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.liskoh.client.ExampleClient;
 import me.liskoh.client.api.components.Component;
-import me.liskoh.client.api.components.actions.ClickAction;
+import me.liskoh.client.api.actions.types.ClickAction;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 

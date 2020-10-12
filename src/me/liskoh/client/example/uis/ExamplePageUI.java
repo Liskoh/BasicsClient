@@ -1,9 +1,12 @@
-package me.liskoh.client.api.uis;
+package me.liskoh.client.example.uis;
 
+import me.liskoh.client.api.actions.pagination.BeforePageAction;
+import me.liskoh.client.api.actions.pagination.NextPageAction;
 import me.liskoh.client.api.components.Component;
 import me.liskoh.client.api.components.ComponentPriority;
 import me.liskoh.client.api.components.ResourcePath;
 import me.liskoh.client.api.components.buttons.HoveredButton;
+import me.liskoh.client.api.uis.PageUI;
 import me.liskoh.client.example.uis.auctions.actions.AuctionSellAction;
 import org.lwjgl.input.Keyboard;
 
@@ -68,7 +71,7 @@ public class ExamplePageUI extends PageUI {
     @Override
     public void drawUI(int mouseX, int mouseY, float tick) {
         this.drawPage(mouseX, mouseY);
-        this.getPageInformationText(this.getDividedWidth(), this.getDividedHeight()).draw(mouseX,mouseY);
+        this.getPageInformationText(this.getDividedWidth(), this.getDividedHeight()).draw(mouseX, mouseY);
     }
 
 
@@ -79,9 +82,9 @@ public class ExamplePageUI extends PageUI {
 
     @Override
     protected void onKeyTiped(char c, int key) {
-            if (key == Keyboard.KEY_E)
-            {
-                this.setCurrentPage(this.getCurrentPage() + 1);
-            }
+        if (key == Keyboard.KEY_E)
+            new NextPageAction(this).call();
+        else if (key == Keyboard.KEY_Q)
+            new BeforePageAction(this).call();
     }
 }

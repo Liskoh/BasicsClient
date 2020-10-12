@@ -1,4 +1,4 @@
-package me.liskoh.client.api.uis;
+package me.liskoh.client.api.others;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;

@@ -6,8 +6,7 @@ import net.minecraft.client.Minecraft;
 
 import java.util.List;
 
-import static me.liskoh.client.api.uis.Render2DUtils.*;
-import static org.lwjgl.opengl.GL11.*;
+import static me.liskoh.client.api.others.Render2DUtils.*;
 
 @Getter
 @Setter

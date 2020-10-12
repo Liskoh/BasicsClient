@@ -2,7 +2,7 @@ package me.liskoh.client.api.components.buttons;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.liskoh.client.api.uis.Render2DUtils;
+import me.liskoh.client.api.others.Render2DUtils;
 import net.minecraft.util.ResourceLocation;
 
 @Getter

@@ -6,12 +6,9 @@ import me.liskoh.client.api.BasicsClient;
 import me.liskoh.client.api.events.Event;
 import me.liskoh.client.api.events.impl.KeyTipedEvent;
 import me.liskoh.client.api.events.impl.TickEvent;
-import me.liskoh.client.api.uis.ExamplePageUI;
+import me.liskoh.client.example.uis.ExamplePageUI;
 import me.liskoh.client.example.commands.TestCommand;
 import me.liskoh.client.example.configuration.ExampleConfiguration;
-import me.liskoh.client.example.uis.auctions.AuctionSellUI;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
 import java.io.File;
