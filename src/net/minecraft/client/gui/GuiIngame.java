@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
+import me.liskoh.client.ExampleClient;
+import me.liskoh.client.api.events.impl.RenderEvent;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
@@ -81,6 +84,9 @@ public class GuiIngame extends Gui
     /**
      * Render the ingame overlay with quick icon bar, ...
      */
+
+    public RenderEvent renderEvent = new RenderEvent();
+
     public void renderGameOverlay(float p_73830_1_, boolean p_73830_2_, int p_73830_3_, int p_73830_4_)
     {
         ScaledResolution var5 = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
@@ -141,6 +147,8 @@ public class GuiIngame extends Gui
             {
                 this.func_110327_a(var6, var7);
             }
+
+            ExampleClient.getInstance().onEvent(renderEvent);
 
             this.mc.mcProfiler.startSection("actionBar");
             GL11.glEnable(GL12.GL_RESCALE_NORMAL);

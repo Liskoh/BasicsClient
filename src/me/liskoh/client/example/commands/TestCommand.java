@@ -1,9 +1,9 @@
 package me.liskoh.client.example.commands;
 
-import me.liskoh.client.api.commands.BasicsCommand;
+import me.liskoh.client.api.commands.AbstractCommand;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 
-public class TestCommand extends BasicsCommand {
+public class TestCommand extends AbstractCommand {
 
     public TestCommand(String command) {
         super(command);

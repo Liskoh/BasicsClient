@@ -6,11 +6,11 @@ import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayerMP;
 
 @Getter @Setter
-public abstract class BasicsCommand {
+public abstract class AbstractCommand {
 
     private String command;
 
-    public BasicsCommand(String command) {
+    public AbstractCommand(String command) {
         this.command = command;
     }
 

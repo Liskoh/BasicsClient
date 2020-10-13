@@ -3,7 +3,6 @@ package me.liskoh.client.api.components.items;
 import lombok.Getter;
 import lombok.Setter;
 import me.liskoh.client.api.components.Component;
-import me.liskoh.client.api.components.overlays.MouseOverlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;

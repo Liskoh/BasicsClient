@@ -4,19 +4,24 @@ package me.liskoh.client;
 import lombok.Getter;
 import me.liskoh.client.api.BasicsClient;
 import me.liskoh.client.api.events.Event;
-import me.liskoh.client.api.events.impl.KeyTipedEvent;
+import me.liskoh.client.api.events.impl.KeyTypedEvent;
+import me.liskoh.client.api.events.impl.RenderEvent;
 import me.liskoh.client.api.events.impl.TickEvent;
-import me.liskoh.client.example.uis.ExamplePageUI;
+import me.liskoh.client.api.renderers.InGameRenderer;
 import me.liskoh.client.example.commands.TestCommand;
-import me.liskoh.client.example.configuration.ExampleConfiguration;
+import me.liskoh.client.example.configuration.ClientConfiguration;
+import me.liskoh.client.example.renderers.ArmorRenderer;
 import org.lwjgl.input.Keyboard;
 
 import java.io.File;
 
+@Getter
 public class ExampleClient extends BasicsClient {
 
     @Getter
     private static ExampleClient instance;
+
+    private ClientConfiguration configuration;
 
     public ExampleClient() {
         super("Basics");
@@ -27,11 +32,17 @@ public class ExampleClient extends BasicsClient {
 
         instance = this;
 
+        //modules
+//        this.addModule(new RankingModule("Ranking"));
+
         //commands
         this.registerCommand(new TestCommand("test"));
 
         //configurations
-        this.getConfigs().add(new ExampleConfiguration(new File(this.getMc().mcDataDir, "macros.txt")));
+        this.getConfigs().add(this.configuration = new ClientConfiguration(new File(this.getMc().mcDataDir, "settings.json")));
+
+        //renderers
+        this.addRenderer(new ArmorRenderer());
 
         this.loadFiles();
 
@@ -50,14 +61,14 @@ public class ExampleClient extends BasicsClient {
 
         if (event instanceof TickEvent) {
             this.resetResolution();
-        } else if (event instanceof KeyTipedEvent) {
+        } else if (event instanceof KeyTypedEvent) {
 
-            final KeyTipedEvent keyTipedEvent = (KeyTipedEvent) event;
+            final KeyTypedEvent keyTypedEvent = (KeyTypedEvent) event;
 
-            if (keyTipedEvent.getKey() == Keyboard.KEY_Q)
-//                this.displayUI(new AuctionSellUI(new ItemStack(Items.diamond_sword)));
-                this.displayUI(new ExamplePageUI());
+            if (keyTypedEvent.getKey() == Keyboard.KEY_Q) { }
+
+        } else if (event instanceof RenderEvent) {
+            this.getRenderers().forEach(InGameRenderer::draw);
         }
-
     }
 }

@@ -400,12 +400,13 @@ public class GuiTextField extends Gui {
         }
     }
 
-    public void drawUITextBox(float scale) {
+    public void drawUIBox() {
         if (this.func_146176_q()) {
             if (this.func_146181_i()) {
 //                drawRect(this.field_146209_f - 1, this.field_146210_g - 1, this.field_146209_f + this.field_146218_h + 1, this.field_146210_g + this.field_146219_i + 1, -6250336);
 //                drawRect(this.field_146209_f, this.field_146210_g, this.field_146209_f + this.field_146218_h, this.field_146210_g + this.field_146219_i, -16777216);
             }
+
             int var1 = this.field_146226_p ? this.field_146222_t : this.field_146221_u;
             int var2 = this.field_146224_r - this.field_146225_q;
             int var3 = this.field_146223_s - this.field_146225_q;
@@ -422,8 +423,7 @@ public class GuiTextField extends Gui {
 
             if (var4.length() > 0) {
                 String var10 = var5 ? var4.substring(0, var2) : var4;
-//                var9 = this.field_146211_a.drawStringWithShadow(var10, var7, var8, var1);
-//                var9 = Render2DUtils.drawText(var10, (int) (var7 / scale), (int) (var8 / scale), scale);
+                var9 = this.field_146211_a.drawStringWithShadow(var10, var7, var8, var1);
             }
 
             boolean var13 = this.field_146224_r < this.field_146216_j.length() || this.field_146216_j.length() >= this.func_146208_g();
@@ -437,16 +437,14 @@ public class GuiTextField extends Gui {
             }
 
             if (var4.length() > 0 && var5 && var2 < var4.length()) {
-//                this.field_146211_a.drawStringWithShadow(var4.substring(var2), var9, var8, var1);
-                Render2DUtils.drawText(var4.substring(var2), (int) (var9 / scale), (int) (var8 / scale), scale);
+                this.field_146211_a.drawStringWithShadow(var4.substring(var2), var9, var8, var1);
             }
 
             if (var6) {
                 if (var13) {
                     Gui.drawRect(var11, var8 - 1, var11 + 1, var8 + 1 + this.field_146211_a.FONT_HEIGHT, -3092272);
                 } else {
-//                    this.field_146211_a.drawStringWithShadow("_", var11, var8, var1);
-//                    var9 = Render2DUtils.drawText("_", (int) (var11 / scale), (int) (var8 / scale), scale);
+                    this.field_146211_a.drawStringWithShadow("_", var11, var8, var1);
                 }
             }
 

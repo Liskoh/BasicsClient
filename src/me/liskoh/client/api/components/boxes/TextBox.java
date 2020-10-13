@@ -13,23 +13,16 @@ public class TextBox extends Component {
 
     private GuiTextField textField;
     private FontRenderer renderer;
-    private float textScale;
 
     public TextBox(int x, int y, int width, int height) {
         super(x, y);
         this.renderer = Minecraft.getMinecraft().fontRenderer;
         this.textField = new GuiTextField(this.renderer, this.getX(), this.getY(), width, height);
-        this.textScale = 1.0F;
     }
 
     @Override
     public void draw(int mouseX, int mouseY) {
         this.drawTextBox();
-    }
-
-    public TextBox setScale(float scale) {
-        this.textScale = scale;
-        return this;
     }
 
     public TextBox setDefaultText(String text) {
@@ -43,7 +36,7 @@ public class TextBox extends Component {
 
     public void drawTextBox() {
         String password = this.textField.getText();
-        this.textField.drawUITextBox(this.textScale);
+        this.textField.drawUIBox();
         replaceText(password);
     }
 

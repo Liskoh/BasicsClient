@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import me.liskoh.client.api.components.Component;
 import me.liskoh.client.api.components.texts.Text;
+import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-public abstract class PageUI extends UI {
+public abstract class PaginationUI extends UI {
 
     private int currentPage;
     private int maxPage;
@@ -18,10 +19,8 @@ public abstract class PageUI extends UI {
     private int currentIndex;
 
 
-    public PageUI(int componentsPerPage) {
-        ;
+    public PaginationUI() {
         this.currentPage = 1;
-        this.componentsPerPage = componentsPerPage;
         this.currentIndex = 0;
     }
 
@@ -30,30 +29,27 @@ public abstract class PageUI extends UI {
     public void drawPage(int mouseX, int mouseY) {
         this.getCurrentPageComponents().forEach(component -> {
             component.draw(mouseX, mouseY);
-            Text text = new Text(component.getX(), component.getY(), "Hey " + component.getIndex() + " page " + component.getPage());
-            text.draw(mouseX, mouseY);
         });
-
     }
+
 
     public void rangePage() {
         int index = 0;
         int page = 1;
         for (Component paginationComponent : this.getPaginationComponents()) {
-            paginationComponent.setIndex(index);
             paginationComponent.setPage(page);
             if (index >= this.componentsPerPage - 1) {
                 page++;
-                index = 0;
+                index = -1;
             }
             index++;
         }
         this.maxPage = page;
-        System.out.println("max " + maxPage);
     }
 
-    public Text getPageInformationText(int x, int y) {
-        return new Text(x, y, "Page (" + this.currentPage + "/" + this.maxPage + ")");
+    public void drawPageInformations(int x, int y) {
+        String title = "(" + this.currentPage + "/" + this.maxPage + ")";
+        new Text(x - (Minecraft.getMinecraft().fontRenderer.getStringWidth(title) / 2), y, title).draw(0,0);
     }
 
     public List<Component> getCurrentPageComponents() {
@@ -66,12 +62,4 @@ public abstract class PageUI extends UI {
         return comp;
     }
 
-
 }
-
-
-/*
-
-
-
- */

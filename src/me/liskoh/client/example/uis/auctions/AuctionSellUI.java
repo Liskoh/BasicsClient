@@ -2,8 +2,8 @@ package me.liskoh.client.example.uis.auctions;
 
 import lombok.Getter;
 import me.liskoh.client.api.components.ComponentPriority;
-import me.liskoh.client.api.components.ResourcePath;
-import me.liskoh.client.api.components.backgrounds.Background;
+import me.liskoh.client.api.resources.ResourcePath;
+import me.liskoh.client.api.components.backgrounds.TexturedBackground;
 import me.liskoh.client.api.components.boxes.TextBox;
 import me.liskoh.client.api.components.buttons.HoveredButton;
 import me.liskoh.client.api.components.items.ItemStackComponent;
@@ -26,7 +26,7 @@ public class AuctionSellUI extends UI {
     @Override
     public void createUI() {
 
-        Background background = new Background(this.getDividedWidth() - 250, this.getDividedHeight() - 150);
+        TexturedBackground background = new TexturedBackground(this.getDividedWidth() - 250, this.getDividedHeight() - 150);
         background.setSize(1450 / 3, 709 / 3);
         background.setResource(ResourcePath.AUCTION_BACKGROUND);
         background.setPriority(ComponentPriority.BACKGROUND);
@@ -52,7 +52,7 @@ public class AuctionSellUI extends UI {
         this.addComponent(denyButton);
 
 
-        Background slot = new Background(this.getDividedWidth() - 210, this.getDividedHeight() - 70);
+        TexturedBackground slot = new TexturedBackground(this.getDividedWidth() - 210, this.getDividedHeight() - 70);
         slot.setSize(1269 / 10, 1268 / 10);
         slot.setResource(ResourcePath.AUCTION_SLOT);
         slot.setPriority(ComponentPriority.BACKGROUND);
@@ -65,7 +65,7 @@ public class AuctionSellUI extends UI {
         item.setVisible(true);
         this.addComponent(item);
 
-        Background priceSlot = new Background(this.getDividedWidth() - 60, this.getDividedHeight() - 38);
+        TexturedBackground priceSlot = new TexturedBackground(this.getDividedWidth() - 60, this.getDividedHeight() - 38);
         priceSlot.setSize(3536 / 15, 936 / 15);
         priceSlot.setResource(ResourcePath.AUCTION_PRICE_SLOT);
         priceSlot.setPriority(ComponentPriority.BACKGROUND);
@@ -93,7 +93,7 @@ public class AuctionSellUI extends UI {
     }
 
     @Override
-    protected void onKeyTiped(char c, int key) {
+    protected void onKeyTyped(char c, int key) {
         this.box.getTextField().textboxKeyTyped(c, key);
     }
 }

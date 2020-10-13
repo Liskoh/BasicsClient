@@ -1,4 +1,4 @@
 package me.liskoh.client.api.uis;
 
-public class ScrollableUI {
+public abstract class ScrollableUI extends UI{
 }

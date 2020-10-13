@@ -33,7 +33,7 @@ import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
 
 import me.liskoh.client.ExampleClient;
-import me.liskoh.client.api.events.impl.KeyTipedEvent;
+import me.liskoh.client.api.events.impl.KeyTypedEvent;
 import me.liskoh.client.api.events.impl.TickEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -1852,7 +1852,7 @@ public class Minecraft implements IPlayerUsage
 
                 if (Keyboard.getEventKeyState())
                 {
-                    ExampleClient.getInstance().onEvent(new KeyTipedEvent(Keyboard.getEventKey()));
+                    ExampleClient.getInstance().onEvent(new KeyTypedEvent(Keyboard.getEventKey()));
                     KeyBinding.onTick(Keyboard.getEventKey());
                 }
 

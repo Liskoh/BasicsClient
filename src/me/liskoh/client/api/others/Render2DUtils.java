@@ -1,10 +1,13 @@
 package me.liskoh.client.api.others;
 
+import me.liskoh.client.api.resources.ResourcePath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+
+import java.awt.*;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -70,12 +73,40 @@ public class Render2DUtils {
         tes.draw();
     }
 
-    public static void renderImage(ResourceLocation resourceLocation, double x, double y, int sizeX, int sizeY, double scale) {
-        Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        int i = (int) ((double) sizeX * scale);
-        int j = (int) ((double) sizeY * scale);
-        drawModalRectWithCustomSizedTexture(x, y, (float) i, (float) j, i, j, (float) i, (float) j);
+    public static void drawModalRect(float posX, float posY, int u, int v, float width, float height) {
+        float scaledX = 1.0F / width;
+        float scaledY = 1.0F / height;
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawingQuads();
+        tessellator.addVertexWithUV(posX, posY + height, 0, u * scaledX, (v + height) * scaledY);
+        tessellator.addVertexWithUV(posX + width, posY + height, 0, (u + width) * scaledX, (v + height) * scaledY);
+        tessellator.addVertexWithUV(posX + width, posY, 0, (u + width) * scaledX, v * scaledY);
+        tessellator.addVertexWithUV(posX, posY, 0, u * scaledX, v * scaledY);
+        tessellator.draw();
     }
+
+
+
+    public static void renderImage(ResourceLocation resource, int x, int y, int width, int height) {
+        glColor4d(1, 1, 1, 1);
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(resource);
+        drawModalRect(x, y, 0, 0, width, height);
+        GL11.glDisable(GL11.GL_BLEND);
+    }
+
+    public static void renderImage(ResourcePath resource, int x, int y, int width, int height) {
+        glColor4d(1, 1, 1, 1);
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(resource.getResource());
+        drawModalRect(x, y, 0, 0, width, height);
+        GL11.glDisable(GL11.GL_BLEND);
+    }
+
 }

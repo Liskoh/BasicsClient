@@ -20,7 +20,7 @@ public class MainMenuUI extends UI {
     }
 
     @Override
-    protected void onKeyTiped(char c, int key) {
+    protected void onKeyTyped(char c, int key) {
 
     }
 }

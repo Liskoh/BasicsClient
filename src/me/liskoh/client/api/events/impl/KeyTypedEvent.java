@@ -5,11 +5,11 @@ import lombok.Setter;
 import me.liskoh.client.api.events.Event;
 
 @Getter @Setter
-public class KeyTipedEvent extends Event {
+public class KeyTypedEvent extends Event {
 
     private int key;
 
-    public KeyTipedEvent(int key) {
+    public KeyTypedEvent(int key) {
         this.key = key;
     }
 

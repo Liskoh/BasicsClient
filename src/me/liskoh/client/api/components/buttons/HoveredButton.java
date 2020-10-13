@@ -24,9 +24,9 @@ public class HoveredButton extends Button {
             this.hoverLocation = new ResourceLocation(this.getResource().getResourcePath().replace(".png", "_hover.png"));
 
         if(!isWithin(mouseX, mouseY))
-            Render2DUtils.renderImage(this.getResource(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), 1);
+            Render2DUtils.renderImage(this.getResource(), this.getX(), this.getY(), this.getWidth(), this.getHeight());
         else
-            Render2DUtils.renderImage(this.hoverLocation, this.getX(), this.getY(), this.getWidth(), this.getHeight(), 1);
+            Render2DUtils.renderImage(this.hoverLocation, this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
         drawText(mouseX, mouseY);
     }

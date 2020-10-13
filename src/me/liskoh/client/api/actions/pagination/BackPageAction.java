@@ -1,13 +1,13 @@
 package me.liskoh.client.api.actions.pagination;
 
 import me.liskoh.client.api.actions.types.ClickAction;
-import me.liskoh.client.api.uis.PageUI;
+import me.liskoh.client.api.uis.PaginationUI;
 
-public class BeforePageAction extends ClickAction {
+public class BackPageAction extends ClickAction {
 
-    private PageUI ui;
+    private PaginationUI ui;
 
-    public BeforePageAction(PageUI ui) {
+    public BackPageAction(PaginationUI ui) {
         this.ui = ui;
     }
 

@@ -3,10 +3,13 @@ package me.liskoh.client.api.uis;
 import lombok.Getter;
 import lombok.Setter;
 import me.liskoh.client.ExampleClient;
-import me.liskoh.client.api.components.Component;
+import me.liskoh.client.api.actions.pagination.BackPageAction;
+import me.liskoh.client.api.actions.pagination.NextPageAction;
 import me.liskoh.client.api.actions.types.ClickAction;
+import me.liskoh.client.api.components.Component;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Mouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +33,7 @@ public abstract class UI extends GuiScreen {
 
     protected abstract void onClick(int mouseX, int mouseY, int mouseButton);
 
-    protected abstract void onKeyTiped(char c, int key);
+    protected abstract void onKeyTyped(char c, int key);
 
     @Override
     public void initGui() {
@@ -45,15 +48,6 @@ public abstract class UI extends GuiScreen {
 
         this.drawDefaultBackground();
 
-        if (this instanceof PageUI) {
-            PageUI page = (PageUI) this;
-            page.getCurrentPageComponents().forEach(component -> {
-                page.setCurrentComponentPosition();
-                page.setCurrentIndex(page.getCurrentIndex() + 1);
-            });
-            page.setCurrentIndex(0);
-        }
-
         this.components.forEach(component -> {
             if (component.isVisible() && !component.isPagination())
                 component.draw(mouseX, mouseY);
@@ -65,6 +59,17 @@ public abstract class UI extends GuiScreen {
         });
 
         this.drawUI(mouseX, mouseY, tick);
+
+        if (this instanceof PaginationUI) {
+            PaginationUI page = (PaginationUI) this;
+            page.getCurrentPageComponents().forEach(component -> {
+                page.setCurrentComponentPosition();
+                page.setCurrentIndex(page.getCurrentIndex() + 1);
+            });
+            page.setCurrentIndex(0);
+            page.drawPage(mouseX, mouseY);
+        }
+
         super.drawScreen(mouseX, mouseY, tick);
     }
 
@@ -79,7 +84,6 @@ public abstract class UI extends GuiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-
         this.components.forEach(component -> {
             if (component.isVisible() && component.isWithin(mouseX, mouseY) && !component.getActions().isEmpty())
                 component.getActions().forEach(action -> {
@@ -94,10 +98,26 @@ public abstract class UI extends GuiScreen {
 
     @Override
     protected void keyTyped(char c, int key) {
-        this.onKeyTiped(c, key);
-//        if(! (this instanceof Uncloseable) && key != Keyboard.KEY_ESCAPE)
+        this.onKeyTyped(c, key);
         if (!(this instanceof Uncloseable))
             super.keyTyped(c, key);
+    }
+
+    @Override
+    public void handleMouseInput() {
+
+        if (!(this instanceof PaginationUI))
+            return;
+
+        PaginationUI page = (PaginationUI) this;
+        int direction = Integer.signum(Mouse.getEventDWheel());
+
+        if (direction == 1)
+            new NextPageAction(page).call();
+        else if (direction == -1)
+            new BackPageAction(page).call();
+
+        super.handleMouseInput();
     }
 
     public int getDividedWidth() {
